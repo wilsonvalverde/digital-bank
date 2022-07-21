@@ -18,44 +18,46 @@ export const Index = () => {
         spacing={2}
         justifyContent={"center"}
         direction={"column"}
+        borderRadius={40}
       >
+        {/* Slider */}
         <Grid item xs={12}>
           <Paper>
-            <Slider/>
+            <Slider />
           </Paper>
         </Grid>
-        <Grid item>
-          <Grid container spacing={2} justifyContent={"center"}>
+        {/* Cuerpo */}
+        <Grid item xs={12}>
+          <Grid
+            container
+            spacing={8}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
             <Grid item xs={4}>
-              <Paper>
-                <Typography
-                  variant="h1"
-                  sx={{ color: colors.info.main }}
-                  textAlign={"center"}
-                >
-                  Posi bebe
-                </Typography>
-              </Paper>
+              <Typography
+                variant="h1"
+                sx={{ color: colors.light.main}}
+                textAlign={"center"}
+              >
+                Misión
+              </Typography>
             </Grid>
-            <Grid item xs={4}>
-              <Paper>
+            <Grid item xs={6}>
+              <Paper sx= {{borderRadius:5}}>
                 <Typography
-                  variant="h1"
+                  variant="h4"
                   sx={{ color: colors.info.main }}
                   textAlign={"center"}
                 >
-                  Posi bebe
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={4}>
-              <Paper>
-                <Typography
-                  variant="h1"
-                  sx={{ color: colors.info.main }}
-                  textAlign={"center"}
-                >
-                  Posi bebe
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Veritatis suscipit numquam vitae veniam, nesciunt consequatur
+                  repellendus necessitatibus ut soluta libero excepturi alias
+                  beatae amet sunt reiciendis quidem! Suscipit, pariatur
+                  numquam. Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit. Voluptas incidunt quas illum, eveniet commodi dolorem
+                  consectetur temporibus minima modi aspernatur ipsa corrupti
+                  dicta ipsum facere quis voluptate assumenda totam. Debitis!
                 </Typography>
               </Paper>
             </Grid>
