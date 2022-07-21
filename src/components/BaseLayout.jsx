@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { ElementDrawer } from './ElementDrawer'
-import { Container, Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 import { useContextLayout } from '../hooks/context/UseLayoutContextProvider'
 import MDBox from './MDBox'
 
