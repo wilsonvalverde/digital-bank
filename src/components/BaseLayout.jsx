@@ -3,20 +3,41 @@ import PropTypes from 'prop-types'
 import { ElementDrawer } from './ElementDrawer'
 import { Container, Grid } from '@mui/material'
 import { useContextLayout } from '../hooks/context/UseLayoutContextProvider'
+import MDBox from './MDBox'
 
 export const BaseLayout = ({ children }) => {
 	const { openDrawer } = useContextLayout()
 	return (
-		<Container style={{ maxWidth: `${openDrawer ? '76.5%' : '97%'}`, height: '100%' }}>
-			<Grid container direction="column" height="100%">
-				<Grid item>
-					<ElementDrawer />
-				</Grid>
-				<Grid item xs={12} padding={'2%'}>
+		<MDBox
+			minHeight='100%'
+			display='flex'
+			flexDirection='column'
+			sx={({ breakpoints, transitions }) => ({
+				position: "relative",
+				[breakpoints.up("xl")]: {
+					transition: transitions.create(["margin-left", "margin-right"], {
+						easing: transitions.easing.easeInOut,
+						duration: transitions.duration.standard,
+					}),
+				},
+			})}>
+			<Grid
+				flexGrow={1}
+				container
+				sx={{
+					maxWidth: '80% !important',
+					// marginTop: '90px',
+					// marginBottom: '90px',
+					// minHeight: '73vh',
+					paddingLeft: `${openDrawer ? '5%' : '0'}`,
+					mx: 'auto'
+				}}>
+				<ElementDrawer />
+				<Grid item width={'100%'}>
 					{children}
 				</Grid>
 			</Grid>
-		</Container>
+		</MDBox>
 	)
 }
 

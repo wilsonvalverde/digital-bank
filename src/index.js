@@ -1,19 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import { CssBaseline } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import { UseLayoutContextProvider } from './hooks/context/UseLayoutContextProvider';
 import App from './App';
 import './index.css';
+import theme from './styles/theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
-		<CssBaseline>
-			<UseLayoutContextProvider>
-				<App />
-			</UseLayoutContextProvider>
-		</CssBaseline>
+		<ThemeProvider theme={theme}>
+			<CssBaseline>
+				<UseLayoutContextProvider>
+					<App />
+				</UseLayoutContextProvider>
+			</CssBaseline>
+		</ThemeProvider>
 	</React.StrictMode>
 );
 
