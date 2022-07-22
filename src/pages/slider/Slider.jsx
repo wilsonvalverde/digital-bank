@@ -1,6 +1,7 @@
-import { Paper } from "@mui/material";
+import { Grid } from "@mui/material";
 import React, { useRef, useState } from "react";
 import Carousel from "react-elastic-carousel";
+import colors from "../../styles/theme/base/colors";
 
 export const Slider = () => {
   const [imgSlider, setImgSlider] = useState([
@@ -20,11 +21,18 @@ export const Slider = () => {
         "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80",
     },
   ]);
+  const fondo = { 0: "/assets/image/bgBody.png" };
   const carouselRef = useRef(null);
   let resetTimeout;
   let time_carousel = 1500;
   return (
-    <Paper>
+    <Grid
+      container
+      boxShadow={8}
+      sx={{
+        backgroundColor: colors.light.main
+      }}
+    >
       <Carousel
         focusOnSelect={true}
         autoPlaySpeed={time_carousel}
@@ -49,6 +57,6 @@ export const Slider = () => {
             </div>
           ))}
       </Carousel>
-    </Paper>
+    </Grid>
   );
 };
