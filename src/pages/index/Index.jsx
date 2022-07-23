@@ -3,6 +3,7 @@ import MDBox from "../../components/MDBox";
 import { Typography, Grid, Paper } from "@mui/material";
 import colors from "../../styles/theme/base/colors";
 import { Slider } from "../slider/Slider";
+import MDButton from "../../components/MDButton";
 
 export const Index = () => {
   return (
@@ -37,14 +38,14 @@ export const Index = () => {
             <Grid item xs={4}>
               <Typography
                 variant="h1"
-                sx={{ color: colors.light.main}}
+                sx={{ color: colors.light.main }}
                 textAlign={"center"}
               >
                 Misión
               </Typography>
             </Grid>
             <Grid item xs={6}>
-              <Paper sx= {{borderRadius:5}}>
+              <Paper sx={{ borderRadius: 5 }}>
                 <Typography
                   variant="h4"
                   sx={{ color: colors.info.main }}
