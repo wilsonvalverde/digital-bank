@@ -2,7 +2,6 @@ import React from "react";
 import MDButton from ".";
 import { ThemeProvider } from '@mui/material/styles';
 import createTheme from '../../styles/theme'
-import { temperature } from "chroma-js";
 
 const theme = createTheme
 export default {
