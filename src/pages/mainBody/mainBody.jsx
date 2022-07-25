@@ -1,72 +1,51 @@
-import { Typography, Grid, Paper } from "@mui/material";
+import { Typography, Grid, Button } from "@mui/material";
 import colors from "../../styles/theme/base/colors";
+import LoginIcon from "@mui/icons-material/Login";
+import { Ingreso } from "../ingreso/Ingreso";
 
 export const MainBody = () => {
-  const fondo = { 0: "./../../imagenes/myv.png" };
+  const fondo = { 0: "/assets/images/myv.png" };
   return (
     <Grid
       container
-      spacing={2}
+      width="100%"
+      height="100%"
+      minHeight="0"
       justifyContent={"center"}
       alignItems={"center"}
-      sx={{
-        backgroundImage: `url(${fondo[0]})`,
-        backgroundSize: "cover !important",
-      }}
+      marginBottom={"50px"}
+      boxShadow={"1"}
     >
-      <Grid item xs={4}>
-        <Typography
-          variant="h1"
-          sx={{ color: colors.dark.main }}
-          textAlign={"center"}
-        >
-          Misión
-        </Typography>
+      <Grid item xs={6}>
+        <img src="/assets/images/dataFintech.png" alt="" />
       </Grid>
       <Grid item xs={6}>
-        {/* <Paper sx= {{borderRadius:5, backgroundColor:colors.transparent.main}}> */}
-        <Typography
-          variant="h5"
-          sx={{ color: colors.dark.main }}
-          textAlign={"center"}
-        >
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis
-          suscipit numquam vitae veniam, nesciunt consequatur repellendus
-          necessitatibus ut soluta libero excepturi alias beatae amet sunt
-          reiciendis quidem! Suscipit, pariatur numquam. Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Voluptas incidunt quas illum,
-          eveniet commodi dolorem consectetur temporibus minima modi aspernatur
-          ipsa corrupti dicta ipsum facere quis voluptate assumenda totam.
-          Debitis!
-        </Typography>
-        {/* </Paper> */}
-      </Grid>
-      <Grid item xs={6}>
-        {/* <Paper sx= {{borderRadius:5, backgroundColor:colors.transparent.main}}> */}
-        <Typography
-          variant="h5"
-          sx={{ color: colors.dark.main }}
-          textAlign={"center"}
-        >
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis
-          suscipit numquam vitae veniam, nesciunt consequatur repellendus
-          necessitatibus ut soluta libero excepturi alias beatae amet sunt
-          reiciendis quidem! Suscipit, pariatur numquam. Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Voluptas incidunt quas illum,
-          eveniet commodi dolorem consectetur temporibus minima modi aspernatur
-          ipsa corrupti dicta ipsum facere quis voluptate assumenda totam.
-          Debitis!
-        </Typography>
-        {/* </Paper> */}
-      </Grid>
-      <Grid item xs={4}>
-        <Typography
-          variant="h1"
-          sx={{ color: colors.dark.main }}
-          textAlign={"center"}
-        >
-          Visión
-        </Typography>
+        <Grid container direction={"column"} alignItems={"center"}>
+          <Grid item paddingBottom={"50px"}>
+            <Typography
+              variant="h1"
+              fontFamily={"SunFlower"}
+              sx={{ color: colors.dark.main }}
+              textAlign={"center"}
+            >
+              Escoge la plantilla que más se adapte a tus gustos y necesidades
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{ color: colors.dark.main }}
+              textAlign={"center"}
+            >
+              ¡Existen plantillas pre-diseñadas, héchales un vistazo!
+            </Typography>
+          </Grid>
+          <Button
+            variant="contained"
+            startIcon={<LoginIcon />}
+            sx={{ color: colors.light.main, backgroundColor: colors.green.main }}
+          >
+            Ver temas
+          </Button>
+        </Grid>
       </Grid>
     </Grid>
   );

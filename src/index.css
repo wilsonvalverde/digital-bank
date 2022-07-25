@@ -14,6 +14,19 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+@font-face {
+    font-family: SunFlower;
+    src: local("SunFlower"), local("SunFlower") url('../src/fonts/SunFlower/Sunflower.otf');
+}
+
+@font-face {
+    font-family: DarkerGrotesque;
+    src: local("DarkerGrotesque Regular"), local("DarkerGrotesque-Regular") url('../src/fonts/DarkerGrotesque/DarkerGrotesque-Regular.ttf');
+}
+
 #root {
-    height: 100%;
+    display: flex;
+    height: auto;
+    min-height: 100%;
+    background-size: cover !important;
 }

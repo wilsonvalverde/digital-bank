@@ -1,4 +1,4 @@
-import { Grid, Button } from "@mui/material";
+import { Grid, Button, Typography } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 import AddToQueueIcon from "@mui/icons-material/AddToQueue";
 import colors from "../../styles/theme/base/colors";
@@ -9,10 +9,9 @@ export const Ingreso = () => {
     <Grid
       container
       spacing={2}
-      sx={{
-        backgroundImage: `url(./../../imagenes/myv.png)`,
-        backgroundSize: "cover !important",
-      }}
+      justifyContent={"center"}
+      alignItems={"center"}
+      marginBottom={"50px"}
     >
       <Grid item xs={6}>
         <Button
@@ -21,15 +20,6 @@ export const Ingreso = () => {
           sx={{ color: colors.light.main }}
         >
           Ingresar
-        </Button>
-      </Grid>
-      <Grid item xs={6}>
-        <Button
-          variant="contained"
-          endIcon={<AddToQueueIcon />}
-          sx={{ color: colors.light.main }}
-        >
-          Registrarme
         </Button>
       </Grid>
     </Grid>

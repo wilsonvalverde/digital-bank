@@ -1,37 +1,46 @@
 import React from "react";
 import MDBox from "../../components/MDBox";
-import { Grid, Paper } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { Slider } from "../slider/Slider";
 import { MainBody } from "../mainBody/mainBody";
 import { Ingreso } from "../ingreso/Ingreso";
+import { BarraMenu } from "../barra/barra";
+import colors from "../../styles/theme/base/colors";
+import { Banner } from "../banner/banner";
+import { Footer } from "../footer/footer";
 
 export const Index = () => {
+  const fondo = { 0: "/assets/images/myv.png" };
   return (
     <MDBox
-      display="block"
+      display="flex"
       alignItems="center"
-      bgColor="ligth"
       width="100%"
       height="100%"
+      // sx={{
+      //   backgroundImage: `url("/assets/images/fondo2.jpg")`,
+      //   backgroundSize: "cover !important",
+      // }}
     >
       <Grid
         container
-        spacing={4}
-        justifyContent={"center"}
         direction={"column"}
-        borderRadius={40}
+        justifyContent={"center"}
+        alignItems={"center"}
       >
-        {/* Slider */}
+          <Banner />
         <Grid item xs={12}>
-          <Slider />
-        </Grid>
-      </Grid>
-      <Grid container justifyContent={"center"} alignItems={"center"}>
-        <Grid item xs={8}>
-          <MainBody />
-        </Grid>
-        <Grid item xs={4} justifyContent={"center"}>
-          <Ingreso />
+          <Grid
+            container
+            spacing={2}
+            justifyContent={"center"}
+            alignItems={"center"}
+            marginTop={"0.5%"}
+          >
+            <Grid item xs={12}>
+              <MainBody />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </MDBox>
