@@ -4,7 +4,6 @@ import AddToQueueIcon from "@mui/icons-material/AddToQueue";
 import colors from "../../styles/theme/base/colors";
 
 export const Banner = () => {
-  const fondo = { 0: "/assets/image/bgBody.png" };
   return (
     <Grid
       className="banner"
@@ -12,12 +11,12 @@ export const Banner = () => {
       direction={"column"}
       justifyContent={"center"}
       alignItems={"center"}
-      boxShadow={'1'}
+      boxShadow={"1"}
     >
-      <img src="/assets/images/tike.png" alt="" width={"25%"} height={"25%"} />
+      <img src="/assets/images/tike.png" alt="" width={"15%"} height={"15%"} />
       <Typography
         variant="h3"
-        fontFamily={"SunFlower"}
+        fontFamily={"DarkerGrotesque"}
         sx={{ color: colors.dark.main }}
         textAlign={"center"}
       >

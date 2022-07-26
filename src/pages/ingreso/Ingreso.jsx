@@ -1,10 +1,8 @@
-import { Grid, Button, Typography } from "@mui/material";
+import { Grid, Button } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
-import AddToQueueIcon from "@mui/icons-material/AddToQueue";
 import colors from "../../styles/theme/base/colors";
 
 export const Ingreso = () => {
-  const fondo = { 0: "/assets/image/bgBody.png" };
   return (
     <Grid
       container

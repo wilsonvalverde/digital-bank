@@ -16,12 +16,16 @@ code {
 
 @font-face {
     font-family: SunFlower;
-    src: local("SunFlower"), local("SunFlower") url('../src/fonts/SunFlower/Sunflower.otf');
+    src: url('../src/fonts/SunFlower/Sunflower.otf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
 }
 
 @font-face {
     font-family: DarkerGrotesque;
-    src: local("DarkerGrotesque Regular"), local("DarkerGrotesque-Regular") url('../src/fonts/DarkerGrotesque/DarkerGrotesque-Regular.ttf');
+    src: url('../src/fonts/DarkerGrotesque/DarkerGrotesque-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
 }
 
 #root {

@@ -4,7 +4,7 @@ import pxToRem from '../functions/pxToRem';
 const { dark } = colors;
 
 const baseProperties = {
-	fontFamily: 'DarkerGrotesqueBlackRegular, SunFlower' ,
+	fontFamily: 'DarkerGrotesque, SunFlower' ,
 	fontWeightLighter: 100,
 	fontWeightLight: 300,
 	fontWeightRegular: 400,

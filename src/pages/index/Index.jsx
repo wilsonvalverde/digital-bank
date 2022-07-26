@@ -16,7 +16,7 @@ export const Index = () => {
       display="flex"
       alignItems="center"
       width="100%"
-      height="100%"
+      height="100%" 
       // sx={{
       //   backgroundImage: `url("/assets/images/fondo2.jpg")`,
       //   backgroundSize: "cover !important",
@@ -29,15 +29,14 @@ export const Index = () => {
         alignItems={"center"}
       >
           <Banner />
-        <Grid item xs={12}>
+        <Grid item lg={12} xs={12}>
           <Grid
             container
             spacing={2}
             justifyContent={"center"}
             alignItems={"center"}
-            marginTop={"0.5%"}
           >
-            <Grid item xs={12}>
+            <Grid item lg={12}xs={12}>
               <MainBody />
             </Grid>
           </Grid>
