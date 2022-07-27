@@ -8,17 +8,17 @@ export const MainBody = () => {
   const [gadget, setGadget] = useState([
     {
       label: "ChatBot",
-      description: "Consulta de saldos, transferencias, y pago de servision en  messenger y whatsapp",
+      description: "Consulta de saldos, transferencias, y pago de servicios en messenger y whatsapp",
       imgPath: "/assets/images/gadget1.png",
     },
     {
       label: "Banca virtual",
-      description: "Banca-Cooperativa en línea compatible en todos los navegadores",
+      description: "Banca-Cooperativa en línea compatible en todos los navegadores.",
       imgPath: "/assets/images/gadget2.png",
     },
     {
       label: "Wallet",
-      description: "Pagos con código QR en locales o cobros con link personalizado",
+      description: "Pagos con código QR en locales o cobros con link personalizados",
       imgPath: "/assets/images/gadget3.png",
     },
     {
@@ -38,7 +38,7 @@ export const MainBody = () => {
     },
     {
       label: "Corresponsales no bancarios",
-      description: "Permite acceder a sectores no bancarizados desde distintos comer",
+      description: "Permite acceder a sectores no bancarizados desde distintos comercios",
       imgPath: "/assets/images/gadget7.png",
     },
   ]);

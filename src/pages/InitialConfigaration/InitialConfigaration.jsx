@@ -57,13 +57,14 @@ const InitialConfigaration = () => {
             lema: dataIFI && dataIFI.dataLegalDataEntity.statementInput,
             facebook: dataIFI && dataIFI.dataLegalDataEntity.facebookInput,
             twitter: dataIFI && dataIFI.dataLegalDataEntity.twitterInput,
+            id_entidad: 1
         }
         const response = await fetchRequest({
             strOperation: '/entity/update_entity',
             additionalData: additionalData,
         })
         console.log(response)
-        
+
         const responseInfo = {
             messageInfo: response.str_res_info_adicional,
             code: response.str_codigo,
