@@ -15,17 +15,17 @@ const stepIcon = {
       zIndex: 99,
       transition: "all 200ms linear",
 
-      "&.Mui-active": {
-        background: primary.main,
-        borderColor: primary.main,
-        color: primary.main,
-      },
+    //   "&.Mui-active": {
+    //     background: primary.main,
+    //     borderColor: primary.main,
+    //     color: primary.main,
+    //   },
       "&.Mui-active .MuiStepIcon-text": {
         fill: white.main,
       },
-      ".MuiStepIcon-text": {
-        fill: primary.main,
-      },
+    //   ".MuiStepIcon-text": {
+    //     fill: primary.main,
+    //   },
     },
   },
 };

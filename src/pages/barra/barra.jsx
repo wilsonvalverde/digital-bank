@@ -8,29 +8,17 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
+import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import colors from "../../styles/theme/base/colors";
+import { useNavigate } from "react-router-dom";
 
 export const BarraMenu = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const navItems = ["Home", "About", "Contact"];
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const navigate = useNavigate()
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
   };
 
   return (
@@ -40,151 +28,51 @@ export const BarraMenu = () => {
         backgroundColor: colors.light.main,
       }}
     >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              color="dark"
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Typography
-                  textAlign="center"
-                  color="dark"
-                  //sx={{ color: colors.dark.main }}
-                >
-                  Home
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Typography
-                  textAlign="center"
-                  color="dark"
-                  //sx={{ color: colors.dark.main }}
-                >
-                  Ingresar
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Typography
-                  textAlign="center"
-                  color="dark"
-                  //sx={{ color: colors.dark.main }}
-                >
-                  Registrarme
-                </Typography>
-              </MenuItem>
-            </Menu>
-            <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-              <MenuItem onClick={handleOpenUserMenu} sx={{ p: 2 }}>
-                <Typography
-                  variant="h5"
-                  noWrap
-                  component="a"
-                  textAlign="center"
-                  color="dark"
-                  //sx={{ color: colors.dark.main }}
-                >
-                  Ingresar
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Typography
-                  variant="h5"
-                  noWrap
-                  component="a"
-                  textAlign="center"
-                  color="dark"
-                  //sx={{ color: colors.dark.main }}
-                >
-                  Registrarme
-                </Typography>
-              </MenuItem>
-            </Box>
-          </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
+      <Toolbar>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="start"
+          onClick={handleDrawerToggle}
+          sx={{ mr: 2, display: { sm: "none" } }}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography
+          variant="h5"
+          component="div"
+          sx={{
+            flexGrow: 1,
+            display: { xs: "none", sm: "block", color: colors.green.main },
+          }}
+        >
+          TIKE
+        </Typography>
+        <Stack spacing={2} direction="row">
+          <Button variant="text" sx={{ color: colors.green.main }}>
+            Nosotros
+          </Button>
+          <Button variant="text" sx={{ color: colors.green.main }}>
+            Nuestros productos
+          </Button>
+          <Button variant="text" sx={{ color: colors.green.main }}>
+            Contáctenos
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{ color: colors.green.main, borderColor: colors.green.main }}
+            onClick={() => navigate('/PrimerosPasos')}
           >
-            TIKE
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
-            >
-              Home
-            </Button>
-          </Box>
-
-          <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-            <MenuItem onClick={handleOpenUserMenu} sx={{ p: 2 }}>
-              <Typography
-                variant="h5"
-                noWrap
-                component="a"
-                textAlign="center"
-                color="dark"
-                //sx={{ color: colors.dark.main }}
-              >
-                Ingresar
-              </Typography>
-            </MenuItem>
-            <MenuItem onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Typography
-                variant="h5"
-                noWrap
-                component="a"
-                textAlign="center"
-                color="dark"
-                //sx={{ color: colors.dark.main }}
-              >
-                Registrarme
-              </Typography>
-            </MenuItem>
-          </Box>
-        </Toolbar>
-      </Container>
+            Acceder
+          </Button>
+          <Button
+            variant="contained"
+            sx={{ color: colors.white.main, backgroundColor: colors.green.main }}
+          >
+            Crear cuenta
+          </Button>
+        </Stack>
+      </Toolbar>
     </AppBar>
   );
 };

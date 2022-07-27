@@ -1,56 +1,70 @@
 import React from 'react'
 import { HomeOutlined, CloseOutlined, KeyboardArrowRightOutlined } from "@mui/icons-material";
-import { Drawer, ListItem, ListItemIcon, ListItemText, IconButton, Grid } from '@mui/material'
+import { IconButton, Grid, Button } from '@mui/material'
 import { useContextLayout } from '../hooks/context/UseLayoutContextProvider';
-import colors from '../styles/theme/base/colors';
+import MDBox from './MDBox';
 
 export const ElementDrawer = () => {
 	const { openDrawer, setOpenDrawer } = useContextLayout()
 	const optionsDrawer = [
-		{ name: 'Seleccionar tema', icon: <HomeOutlined color={'primary'} /> },
+		{ label: 'Seleccionar tema', icon: <HomeOutlined color={'black'} sx={{ fontSize: '2rem' }} /> },
 	]
-	const getList = () => (
-		<Grid item style={{ width: 250, padding: '5% 0', height: '100%' }}>
-			<Grid container padding={'8px 16px'}>
-				<Grid item>
-					<IconButton onClick={() => { setOpenDrawer(!openDrawer) }} sx={{ padding: 0 }} color={'black'}>
-						<CloseOutlined />
-					</IconButton>
-				</Grid>
-			</Grid>
-			{
-				optionsDrawer.map((item, index) => (
-					<ListItem button key={index}>
-						<ListItemIcon>{item.icon}</ListItemIcon>
-						<ListItemText primary={item.name} sx={{ color: colors.black.main }} />
-					</ListItem>
-				))
-			}
-		</Grid >
-	);
+
 	return (
 		<>
 			{
-				openDrawer
-					?
-					<Drawer
-						variant={'permanent'}
-						open={openDrawer}
-						anchor={"left"}>
-						{getList()}
-					</Drawer>
-					:
-					<Drawer variant={'permanent'}>
-						<Grid item style={{ width: 51, padding: '5% 0', height: '100%' }}>
-							<Grid container justifyContent="center" padding={'8px 16px'}>
-								<Grid item>
-									<IconButton onClick={() => { setOpenDrawer(!openDrawer) }} sx={{ padding: 0 }} color={'black'}>
-										<KeyboardArrowRightOutlined />
-									</IconButton>
-								</Grid>
+				<MDBox
+					shadow='md'
+					display='block'
+					alignItems='center'
+					bgColor='white'
+					opacity={0.8}
+					width='100%'
+					height='100%'
+					p={1}
+					sx={{
+						borderRight: ({ borders: { borderWidth, borderColor } }) =>
+							`${borderWidth[5]} dashed ${borderColor}`,
+					}}>
+					<Grid container height={'100%'} direction='column' rowSpacing={2}>
+						<Grid item flexGrow={1}>
+							<Grid container justifyContent={'center'}>
+								<img src={openDrawer ? '/assets/images/stike-logotipo.png' : '/assets/images/stike-logo.png'} width="100%"/>
+								{
+									openDrawer
+										?
+										optionsDrawer.map((option, index) =>
+											<Grid container justifyContent='center' columnSpacing={2} key={index}>
+												<Button variant="contained" startIcon={option.icon} color='white'>
+													{option.label}
+												</Button>
+											</Grid>
+										)
+										:
+										optionsDrawer.map((option, index) =>
+											<Grid item key={index}>
+												<IconButton onClick={() => { }}>
+													{option.icon}
+												</IconButton>
+											</Grid>
+										)
+								}
 							</Grid>
 						</Grid>
-					</Drawer>
+						<Grid item alignSelf={'end'}>
+							<IconButton onClick={() => { setOpenDrawer(!openDrawer) }}>
+								{
+									openDrawer
+										?
+										<CloseOutlined color='black' />
+										:
+										<KeyboardArrowRightOutlined color='black' />
+								}
+							</IconButton>
+						</Grid>
+					</Grid>
+				</MDBox>
+
 			}
 		</>
 	)

@@ -8,37 +8,37 @@ export const MainBody = () => {
   const [gadget, setGadget] = useState([
     {
       label: "ChatBot",
-      description: "Es un chatbotasasdasdasdad asfadadasd asfaaf asadas asasas",
+      description: "Consulta de saldos, transferencias, y pago de servision en  messenger y whatsapp",
       imgPath: "/assets/images/gadget1.png",
     },
     {
       label: "Banca virtual",
-      description: "sdihgaskbfklsdkfasdkbskdlbfaskldfkjdsfk",
+      description: "Banca-Cooperativa en línea compatible en todos los navegadores",
       imgPath: "/assets/images/gadget2.png",
     },
     {
       label: "Wallet",
-      description: "sdihgaskbfklsdkfasdkbskdlbfaskldfkjdsfk",
+      description: "Pagos con código QR en locales o cobros con link personalizado",
       imgPath: "/assets/images/gadget3.png",
     },
     {
       label: "Apertura de cuenta",
-      description: "sdihgaskbfklsdkfasdkbskdlbfaskldfkjdsfk",
+      description: "Permite a tus clientes aperturar una cuenta desde la comodidad de su hogar",
       imgPath: "/assets/images/gadget4.png",
     },
     {
       label: "Blockchain",
-      description: "sdihgaskbfklsdkfasdkbskdlbfaskldfkjdsfk",
+      description: "Seguridad con el uso de Blockchain",
       imgPath: "/assets/images/gadget5.png",
     },
     {
       label: "App móvil",
-      description: "sdihgaskbfklsdkfasdkbskdlbfaskldfkjdsfk",
+      description: "Transacciona y accede a servicios financieros desde el móvil",
       imgPath: "/assets/images/gadget6.png",
     },
     {
-      label: "Corresponsale",
-      description: "sdihgaskbfklsdkfasdkbskdlbfaskldfkjdsfk",
+      label: "Corresponsales no bancarios",
+      description: "Permite acceder a sectores no bancarizados desde distintos comer",
       imgPath: "/assets/images/gadget7.png",
     },
   ]);
@@ -51,51 +51,69 @@ export const MainBody = () => {
       alignItems={"center"}
       margin={"0px"}
       marginBottom={"50px"}
-      sx={{
-        backgroundColor: colors.dark.main,
-      }}
     >
-      <Grid item xs={12}>
-        <Grid
-          container
-          justifyContent={"center"}
-          alignItems={"center"}
-          boxShadow={2}
-          sx={{
-            backgroundColor: colors.light.main,
-          }}
-        >
-          <Grid item lg={3} xs={12}>
-            <Grid container direction={"column"} alignItems={"center"}>
-              <Grid item paddingBottom={"50px"}>
+      <Grid
+        container
+        justifyContent={"center"}
+        alignItems={"center"}
+        boxShadow={1}
+        sx={{
+          backgroundColor: colors.light.main,
+        }}
+      >
+        <Grid item xs={12}>
+          <Grid container alignItems={"center"}>
+            <Grid item xs={2} paddingBottom={"50px"}>
+              <Grid container direction={"column"} alignItems={"center"}></Grid>
+            </Grid>
+            <Grid item xs={3} paddingBottom={"50px"}>
+              <Grid container direction={"column"} alignItems={"center"}>
                 <Typography
                   variant="h1"
                   fontFamily={"DarkerGrotesque"}
                   sx={{ color: colors.dark.main }}
                   textAlign={"center"}
+                  lineHeight="80%"
+                  paddingBottom={"25px"}
                 >
-                  Lo que tus clientes merecen
+                  Lo que tus{" "}
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: `<label style='font-family:DarkerGrotesque-Extrabold; color:${colors.dark.main}'>clientes merecen</label>`,
+                    }}
+                  />
                 </Typography>
                 <Typography
                   variant="h5"
                   sx={{ color: colors.dark.main }}
                   textAlign={"center"}
                 >
-                  El mas completo grupo de canales bancarios que toda empresa
+                  El mas completo grupo de canales bancarios que toda entidad
                   financiera necesita tener.
                 </Typography>
+              </Grid>
+            </Grid>
+            <Grid item xs={7} paddingBottom={"50px"}>
+              <Grid container direction={"column"} alignItems={"center"}>
+                <img
+                  src="/assets/images/banner_pc.png"
+                  alt=""
+                  width={"50%"}
+                  height={"50%"}
+                />
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
       <Typography
-        variant="h1"
-        sx={{ color: colors.light.main }}
+        variant="h2"
+        sx={{ color: colors.dark.main }}
         textAlign={"center"}
+        fontFamily={"DarkerGrotesque-Extrabold"}
         margin={"auto"}
-        paddingTop={"10px"}
-        paddingBottom={"25px"}
+        paddingTop={"15px"}
+        paddingBottom={"20px"}
       >
         Soluciones para entidades financieras
       </Typography>
@@ -104,7 +122,7 @@ export const MainBody = () => {
           container
           justifyContent={"center"}
           alignItems={"center"}
-          boxShadow={2}
+          boxShadow={1}
           paddingTop={"50px"}
           paddingBottom={"50px"}
           sx={{
@@ -141,7 +159,7 @@ export const MainBody = () => {
             >
               {gadget &&
                 gadget.map((gdt, index) => (
-                  <Grid item xs={4}>
+                  <Grid item xs={4} key={index}>
                     <Grid
                       container
                       columnSpacing={2}
@@ -198,46 +216,63 @@ export const MainBody = () => {
       </Grid>
       <Grid item xs={12}>
         <Grid container justifyContent={"center"} alignItems={"center"}>
-          <Grid item xs={8}>
+          <Grid item xs={5}>
             <Typography
               variant="h1"
-              sx={{ color: colors.light.main }}
+              sx={{ color: colors.dark.main }}
               textAlign={"center"}
               margin={"auto"}
               paddingTop={"10px"}
               paddingBottom={"25px"}
+              lineHeight={"80%"}
             >
-              Te presentamos variedad de plantillas que se adaptan a tus
-              necesidades.
+              Te presentamos{" "}
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: `<label style='font-family:DarkerGrotesque-Extrabold; color:${colors.dark.main}'>variedad de plantillas</label>`,
+                }}
+              />{" "}
+              que se{" "}
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: `<label style='font-family:DarkerGrotesque-Extrabold; color:${colors.dark.main}'>adaptan</label>`,
+                }}
+              />{" "}
+              a tus{" "}
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: `<label style='font-family:DarkerGrotesque-Extrabold; color:${colors.dark.main}'>necesidades.</label>`,
+                }}
+              />
             </Typography>
             <Typography
-              variant="h6"
-              sx={{ color: colors.light.main }}
+              variant="h5"
+              sx={{ color: colors.dark.main }}
               textAlign={"center"}
               paddingBottom={"25px"}
             >
-              Plantillas prediseñadas y más!
+              ¡Plantillas prediseñadas y más!
             </Typography>
           </Grid>
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <Grid
-          container
-          justifyContent={"center"}
-          alignItems={"center"}
-          boxShadow={2}
-        >
+        <Grid container justifyContent={"center"} alignItems={"center"}>
           <Grid item xs={12}>
             <Slider />
           </Grid>
           <Grid item xs={12}>
-            <Grid container direction={"column"} alignItems={"center"}>
+            <Grid
+              container
+              direction={"column"}
+              alignItems={"center"}
+              padding={"25px"}
+            >
               <Button
                 variant="contained"
                 startIcon={<LoginIcon />}
                 sx={{
-                  color: colors.light.main,
+                  color: colors.white.main,
                   backgroundColor: colors.green.main,
                 }}
               >

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
-
+import { useSelector } from 'react-redux';
 import MDBox from '../../components/MDBox'
 import { Grid, Typography } from '@mui/material'
 import GenericInput from './../../components/Inputs/GenericInput'
@@ -18,6 +18,8 @@ const InitailDataConfig = ({ sendDataFunction }) => {
     const [primaryColor, setPrimaryColor] = useState(createColor("red"));
     const [secondaryColor, setSecondaryColor] = useState(createColor("blue"));
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const stateColor = useSelector((state) => state.color)
+    const { data: colors } = stateColor
     const namesMin = 1
     const namesMax = 50
     const pathMin = 5
@@ -98,6 +100,7 @@ const InitailDataConfig = ({ sendDataFunction }) => {
                                             minLength: namesMin,
                                         }}
                                         error={errors}
+                                        color={colors}
                                         forceData={forceStringNumber}
                                         onKeyUp={handleChangeInput}
                                         placeHolder={'Nombre de la entidad financiera.'}

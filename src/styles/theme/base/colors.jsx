@@ -42,7 +42,7 @@ const colors = {
 	warningP: {
 		main: "#FFE200"
 	},
-	
+
 	success: {
 		main: "#29FF00",
 		focus: "#29FF00",
@@ -69,6 +69,62 @@ const colors = {
 		focus: "#2c3c58",
 	},
 
+	templatePrimary: {
+		main: "#1B1C35",
+		focus: "#1B1C35"
+	},
+	templateSecondary: {
+		main: "#ffffff",
+		focus: "#ffffff"
+	},
+
+
+	gradients: {
+		primary: {
+			main: "#EC407A",
+			state: "#D81B60",
+		},
+
+		secondary: {
+			main: "#747b8a",
+			state: "#495361",
+		},
+
+		info: {
+			main: "#49a3f1",
+			state: "#1A73E8",
+		},
+
+		success: {
+			main: "#66BB6A",
+			state: "#43A047",
+		},
+
+		warning: {
+			main: "#FFA726",
+			state: "#FB8C00",
+		},
+
+		error: {
+			main: "#EF5350",
+			state: "#E53935",
+		},
+
+		light: {
+			main: "#EBEFF4",
+			state: "#CED4DA",
+		},
+
+		dark: {
+			main: "#42424a",
+			state: "#191919",
+		},
+		template: {
+			main: "#1B1C35",
+			state: "#ffffff"
+		},
+	},
+
 	grey: {
 		100: "#f8f9fa",
 		200: "#f0f2f5",
@@ -81,8 +137,12 @@ const colors = {
 		900: "#212529",
 	},
 	green: {
-		main: "#008834",
-		focus: "#2c3c58",
+		main: "#059700",
+		focus: "#0597000",
+	},
+	mint: {
+		main: "#caf8ce",
+		focus: "#caf8ce",
 	},
 	coloredShadows: {
 		primary: "#004cac",

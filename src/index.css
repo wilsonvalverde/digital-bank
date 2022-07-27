@@ -1,36 +1,53 @@
 html {
-    height: 100%;
+	height: 100%;
 }
 
 body {
-    height: 100%;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+	height: 100%;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.border-top fieldset {
+	border-top-left-radius: 15px;
+}
+
+.border-bottom fieldset {
+	border-bottom-right-radius: 15px;
+
 }
 
 @font-face {
-    font-family: SunFlower;
-    src: url('../src/fonts/SunFlower/Sunflower.otf') format('truetype');
-    font-style: normal;
-    font-weight: normal;
+	font-family: SunFlower;
+	src: url('../src/fonts/SunFlower/Sunflower.otf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
 }
 
 @font-face {
-    font-family: DarkerGrotesque;
-    src: url('../src/fonts/DarkerGrotesque/DarkerGrotesque-Regular.ttf') format('truetype');
-    font-style: normal;
-    font-weight: normal;
+	font-family: DarkerGrotesque;
+	src: url('../src/fonts/DarkerGrotesque/DarkerGrotesque-Regular.ttf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: DarkerGrotesque-Extrabold;
+	src: url('../src/fonts/DarkerGrotesque/DarkerGrotesque-Extrabold.ttf') format('truetype');
+	font-style: normal;
+	font-weight: normal;
 }
 
 #root {
-    display: flex;
-    height: auto;
-    min-height: 100%;
-    background-size: cover !important;
+	display: flex;
+	height: auto;
+	min-height: 100%;
+	background-size: cover !important;
+	width: 100%;
 }

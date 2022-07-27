@@ -5,11 +5,13 @@ import { helpFunctions } from "../../helpers/helpFunctions";
 import colors from "../../styles/theme/base/colors";
 import IconState from '../Icons/Icons'
 
-export const InputLabelStyled = styled(InputLabel)({
+export const InputLabelStyled = styled(InputLabel)(({ theme }) => ({
     fontSize: '19px !important',
-    color: colors.info.main,
+    color: theme.palette.templatePrimary.main,
     margin: '0%'
-});
+}));
+
+
 const { inputValue } = helpFunctions()
 
 const GenericInput = (
@@ -37,7 +39,8 @@ const GenericInput = (
         inputProps,
         icon,
         colorIcon,
-        spacingCustom = 0
+        spacingCustom = 0,
+        color
     }) => {
     const errorField = error && error[name]
     const errorBoolean = error && Boolean(errorField)
@@ -71,7 +74,7 @@ const GenericInput = (
             borderRadius: '25px !important',
             position: 'relative',
             height: '25px',
-            color: colors.text.main,
+            color: color,
             fontSize: '15px !important',
         }
     });
@@ -135,7 +138,7 @@ const GenericInput = (
                     sx={{
                         my: -1,
                     }}>
-                    <Link href="#" fontSize={fontSizeTextLink ? fontSizeTextLink : 'auto'} color={colorTextLink} className="linkStyled" underline="none">
+                    <Link href="#" fontSize={fontSizeTextLink ? fontSizeTextLink : 'auto'} color={color} className="linkStyled" underline="none">
                         {textlink}
                     </Link>
                 </Grid>
