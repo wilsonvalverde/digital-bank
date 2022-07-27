@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MDBox from '../../components/MDBox'
 import { useForm } from 'react-hook-form';
 import { Grid } from '@mui/material';
@@ -7,25 +7,46 @@ import GenericInput from '../../components/Inputs/GenericInput';
 import { helpFunctions } from '../../helpers/helpFunctions';
 import MDButton from '../../components/MDButton';
 import $ from 'jquery';
+import { Color, ColorPicker, createColor } from "material-ui-color";
 import PropTypes from 'prop-types'
 
-const LookDataIFI = ({sendDataFunction}) => {
+const LookDataIFI = ({ sendDataFunction }) => {
     const { forceStringNumber } = helpFunctions()
     const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [isValidValue, setIsValidValue] = useState(false)
-    const pathMin = 5
-    const pathMax = 10
+    const [primaryColor, setPrimaryColor] = useState(createColor("red"));
+    const [secondaryColor, setSecondaryColor] = useState(createColor("blue"));
+    console.log(primaryColor.hex, secondaryColor.hex)
 
     const handleChangeInput = () => {
-        var primaryColor = $('#primaryColor').val() ? $('#primaryColor').val() : ''
-        var secondaryColor = $('#secondaryColor').val() ? $('#secondaryColor').val() : ''
-        if (primaryColor.length > 0 && secondaryColor.length > 0) {
+        if (primaryColor.hex.length === 6 && secondaryColor.hex.length === 6) {
             setIsValidValue(true)
         } else {
             setIsValidValue(false)
         }
     }
+
+    const primaryChangeColor = (Color) => {
+        console.log("change", Color);
+        // setColor(`#${newValue.hex}`);
+        setPrimaryColor(Color);
+        // action('changed')(newValue);
+    };
+
+    const secondaryChangeColor = (Color) => {
+        console.log("change", Color);
+        // setColor(`#${newValue.hex}`);
+        setSecondaryColor(Color);
+        // action('changed')(newValue);
+    };
+    useEffect(() => {
+        handleChangeInput()
+
+        return () => {
+
+        }
+    }, [secondaryColor, primaryColor])
     return (
         <MDBox
             shadow='md'
@@ -45,14 +66,15 @@ const LookDataIFI = ({sendDataFunction}) => {
                 id='form-lookIFI'
                 onSubmit={
                     handleSubmit(data => {
-                        sendDataFunction(data, isValidValue)
+                        sendDataFunction({ primaryColor: primaryColor.hex, secondaryColor: secondaryColor.hex }, isValidValue)
                     })
                 }>
                 <Grid container direction='row' columnSpacing={3} justifyContent='center' alignContent='center' paddingTop={{ xs: '2%', md: '3%' }} paddingBottom={{ xs: '2%', md: '5%' }}>
                     <Grid item xs={12} md={8}>
                         <Grid container paddingLeft={'3vw'} direction='column' rowSpacing={3}>
                             <Grid item xs={10} md={6} width={{ xs: '80%', xl: '50%' }} alignSelf='center'>
-                                <GenericInput
+                                <ColorPicker value={primaryColor} onChange={primaryChangeColor} />
+                                {/* <GenericInput
                                     id={'primaryColor'}
                                     name={'primaryColor'}
                                     typeValue={'text'}
@@ -78,10 +100,11 @@ const LookDataIFI = ({sendDataFunction}) => {
                                     // forceData={forceStringNumber}
                                     onKeyUp={handleChangeInput}
                                     placeHolder={'color principal de la entidad.'}
-                                />
+                                /> */}
                             </Grid>
                             <Grid item xs={10} md={6} width={{ xs: '80%', xl: '50%' }} alignSelf='center'>
-                                <GenericInput
+                                <ColorPicker value={secondaryColor} onChange={secondaryChangeColor} />
+                                {/* <GenericInput
                                     id={'secondaryColor'}
                                     name={'secondaryColor'}
                                     typeValue={'text'}
@@ -107,7 +130,7 @@ const LookDataIFI = ({sendDataFunction}) => {
                                     // forceData={forceStringNumber}
                                     onKeyUp={handleChangeInput}
                                     placeHolder={'color secundario de la entidad.'}
-                                />
+                                /> */}
                             </Grid>
                         </Grid>
                     </Grid>
