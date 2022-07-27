@@ -21,7 +21,7 @@ export const helpFunctions = () => {
     const forceString = (e) => {
         e.target.value = e.target.value.replace(/[^A-Za-zá-üÁ-Ü\s]/g, '')
     }
-    
+
     return {
         inputValue,
         forceStringNumber,

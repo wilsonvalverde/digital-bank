@@ -3,12 +3,12 @@ import Stepper from '../../components/Stepper'
 import { useStepper } from '../../hooks/progressElement/useStepper';
 import InitailDataConfig from './InitailDataConfig';
 import { useNavigate } from 'react-router-dom'
-import LookDataIFI from './LookDataIFI';
 import LegalDataIFI from './LegalDataIFI';
-import SocialMediaDataIFI from './SocialMediaDataIFI';
+import GenericBaseLayout from '../../components/GenericBaseLayout';
 
 const InitialConfigaration = () => {
     const navigate = useNavigate()
+    
     const links = [
         {
             name: 'Digital Bank',
@@ -21,20 +21,10 @@ const InitialConfigaration = () => {
     ]
     const [dataIFI, setDataIFI] = useState([])
     const { activeStep, handleNext, handleSkip, isStepOptional, returnFirstItem } = useStepper(1);
-    const steps = ['Datos Institucionales', 'Aspariencia', 'Legal', 'Canales de comunicacion']
+    const steps = ['Datos Institucionales', 'Legal y comunicación', 'Falta poco',]
 
-    const updateEntity = async (dataUpdateEntity, state) => {
-        setDataIFI(dataUpdateEntity && dataUpdateEntity)
-        if (state) {
-            handleNext()
-        } else {
-            alert('ocurrio un error')
-            navigate('/')
-        }
-    }
-
-    const lookEntity = async (dataLookEntity, state) => {
-        setDataIFI({ ...dataIFI, dataLookEntity })
+    const initialDataEntity = async (dataInitialDataEntity, state) => {
+        setDataIFI(dataInitialDataEntity && dataInitialDataEntity)
         if (state) {
             handleNext()
         } else {
@@ -52,15 +42,36 @@ const InitialConfigaration = () => {
             navigate('/')
         }
     }
-
-    const socialMediaEntity = async (dataSocialMediaEntity, state) => {
-        console.log('ENTERE')
-        setDataIFI({ ...dataIFI, dataSocialMediaEntity })
-        if (state) {
-            console.log('Peticion aqui')
+    const updateEntity = async () => {
+        const additionalData = {
+            titulo_pagina: '',
+            nombre: '',
+            logo_horizontal: '',
+            logo_vertical: '',
+            color_primario: '',
+            color_secundario: '',
+            copyright: '',
+            contacto: '',
+            lema: '',
+            facebook: '',
+            twitter: '',
+        }
+        const response = await fetchRequest({
+            strOperation: 'GET_CONTRATO_APERTURA',
+            additionalData: additionalData,
+        })
+        const responseInfo = {
+            messageInfo: response.str_res_info_adicional,
+            code: response.str_codigo
+        }
+        if (response.str_res_codigo === '000') {
+            setDataContrat({ data: response.datos_contrato, isValidContrat: true })
+            handleNext()
         } else {
-            alert('ocurrio un error')
-            navigate('/')
+            setOpeningParams('ErrorContrat')
+            setMessageDialog(responseInfo.messageInfo.length === 0 ? 'Ha ocurrido un error, por favor inténtalo de nuevo más tarde.' : responseInfo.messageInfo);
+            responseInfo.code !== '1005' && handleOpenDialog()
+            return responseInfo
         }
     }
     console.log(dataIFI)
@@ -68,34 +79,27 @@ const InitialConfigaration = () => {
         switch (value) {
             case 0:
                 return (
-                    <InitailDataConfig sendDataFunction={updateEntity} />
+                    <InitailDataConfig sendDataFunction={initialDataEntity} />
                 )
             case 1:
                 return (
-                    <LookDataIFI sendDataFunction={lookEntity} />
-                )
-            case 2:
-
-                return (
                     <LegalDataIFI sendDataFunction={legalDataEntity} />
                 )
-            case 3:
-
-                return (
-                    <SocialMediaDataIFI sendDataFunction={socialMediaEntity} />
-                )
-
+            case 2:
+                break
             default:
                 break;
         }
     }
     return (
-        <Stepper
-            activeStep={activeStep}
-            steps={steps}
-            links={links}
-            renderSwitch={renderSwitch}
-            page='creditPage' />
+        <GenericBaseLayout>
+            <Stepper
+                activeStep={activeStep}
+                steps={steps}
+                links={links}
+                renderSwitch={renderSwitch}
+                page='creditPage' />
+        </GenericBaseLayout>
     )
 }
 
