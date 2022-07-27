@@ -9,9 +9,7 @@ import App from './App';
 import './index.css';
 import { ThemeIndex } from './styles/theme';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-root.render(
+ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<ThemeIndex>
@@ -22,8 +20,10 @@ root.render(
 				</CssBaseline>
 			</ThemeIndex>
 		</Provider>
-	</React.StrictMode>
+	</React.StrictMode>,
+	document.getElementById('root')
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

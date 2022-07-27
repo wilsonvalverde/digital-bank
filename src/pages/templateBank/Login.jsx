@@ -14,10 +14,11 @@ export const Login = () => {
 	const { data } = stateTheme
 	return (
 		<MDBox
-			minHeight='100%'
+			// minHeight='100%'
+			width='100%'
 			display='flex'
 			flexDirection='row'
-			height={'100%'}
+			// height={'100%'}
 			sx={({ breakpoints, transitions }) => ({
 				position: "relative",
 				[breakpoints.up("xl")]: {
