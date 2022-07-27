@@ -28,7 +28,7 @@ export const MainBody = () => {
     },
     {
       label: "Blockchain",
-      description: "Seguridad con el uso de Blockchain",
+      description: "Añade seguridad y trazabilidad a tus transacciones.",
       imgPath: "/assets/images/gadget5.png",
     },
     {
