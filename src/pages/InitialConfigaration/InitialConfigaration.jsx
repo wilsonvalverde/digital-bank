@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Stepper from '../../components/Stepper'
 import { useStepper } from '../../hooks/progressElement/useStepper';
 import InitailDataConfig from './InitailDataConfig';
@@ -38,7 +38,7 @@ const InitialConfigaration = () => {
     const legalDataEntity = async (dataLegalDataEntity, state) => {
         setDataIFI({ ...dataIFI, dataLegalDataEntity })
         if (state) {
-            handleNext()
+            updateEntity()
         } else {
             alert('ocurrio un error')
             navigate('/')
@@ -57,28 +57,21 @@ const InitialConfigaration = () => {
             lema: dataIFI && dataIFI.dataLegalDataEntity.statementInput,
             facebook: dataIFI && dataIFI.dataLegalDataEntity.facebookInput,
             twitter: dataIFI && dataIFI.dataLegalDataEntity.twitterInput,
-            id_entidad: 1
+            plantilla: 0,
+            id_entidad: 1,
         }
         const response = await fetchRequest({
-            strOperation: '/entity/update_entity',
+            strOperation: 'entity/update_entity',
             additionalData: additionalData,
         })
-        console.log(response)
-
-        const responseInfo = {
-            messageInfo: response.str_res_info_adicional,
-            code: response.str_codigo,
-        }
-        if (response.str_res_codigo === '000') {
-            // setDataContrat({ data: response.datos_contrato, isValidContrat: true })
-            // handleNext()
+        if (response.affectedRows === 1) {
+            setProcessComplete(true)
+            handleNext()
         } else {
-            // setOpeningParams('ErrorContrat')
-            // setMessageDialog(responseInfo.messageInfo.length === 0 ? 'Ha ocurrido un error, por favor inténtalo de nuevo más tarde.' : responseInfo.messageInfo);
-            // responseInfo.code !== '1005' && handleOpenDialog()
-            // return responseInfo
+            console.log('Ocurrio un error')
         }
     }
+
     const renderSwitch = (value) => {
         switch (value) {
             case 0:
@@ -90,12 +83,16 @@ const InitialConfigaration = () => {
                     <LegalDataIFI sendDataFunction={legalDataEntity} />
                 )
             case 2:
-                !processComplete ?
-                    updateEntity()
-                    :
-                    console.log('dadadad')
+                return (
 
-                break
+                    processComplete ?
+                        console.log('Succes')
+                        //Componente Wilson
+                        :
+                        console.log('Error')
+                )
+
+
             default:
                 break;
         }
