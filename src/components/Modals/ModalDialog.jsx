@@ -18,7 +18,7 @@ const BootstrapDialog = styled(Dialog)(() => ({
 	'.MuiPaper-root': {
 		[customBreakpoints.up('md')]: {
 			maxWidth: '60%',
-			minWidth: '40%',
+			minWidth: '50%',
 			maxHeight: 'max-content'
 		},
 		[customBreakpoints.down('md')]: {

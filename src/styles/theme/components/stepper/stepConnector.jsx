@@ -10,13 +10,13 @@ const stepConnector = {
       color: stepper.main,
       transition: "all 200ms linear",
 
-      "&.Mui-active": {
-        color: primary.main,
-      },
+    //   "&.Mui-active": {
+    //     color: primary.main,
+    //   },
 
-      "&.Mui-completed": {
-        color: primary.main,
-      },
+    //   "&.Mui-completed": {
+    //     color: primary.main,
+    //   },
     },
 
     alternativeLabel: {

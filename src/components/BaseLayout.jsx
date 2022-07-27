@@ -22,6 +22,10 @@ export const BaseLayout = ({ children }) => {
 							duration: transitions.duration.standard,
 						}),
 					},
+					backgroundImage: `url('/assets/images/waves1.svg')`,
+					backgroundSize: "cover",
+					backgroundPosition: "center",
+					backgroundRepeat: "no-repeat",
 				})}>
 				<Grid
 					item

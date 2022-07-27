@@ -5,25 +5,40 @@ import { Card } from '../../components/Elements/Card'
 import { ModalDialog } from '../../components/Modals/ModalDialog'
 import { useModal } from '../../hooks/useModal'
 import MDButton from '../../components/MDButton'
+import { Slider } from '../../components/Slider/Slider'
+import { helpFunctions } from '../../helpers/helpFunctions'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateConfigAction } from '../../redux/actions/theme'
+import { useNavigate } from 'react-router-dom'
 
 export const SelectTheme = () => {
+	const { fetchRequest } = helpFunctions()
+
+	const stateTheme = useSelector((state) => state.theme)
+	const { data } = stateTheme
+	const dispatch = useDispatch()
+	let updateTheme = { ...data }
+	const navigate = useNavigate()
 	const themes = [
 		{
 			name: 'Tema 1',
 			imgMain: '/assets/images/theme/theme_1_1.png',
-			colors: { primary: '#ff758c', secondary: '#ff7eb3' },
+			colors: { primary: '#499d24', secondary: '#e8fcea' },
 			previewImages: [
 				'/assets/images/theme/theme_1_1.png',
 				'/assets/images/theme/theme_1_2.png',
+				'/assets/images/theme/theme_1_3.png',
+				'/assets/images/theme/theme_1_4.png',
 			]
 		},
 		{
 			name: 'Tema 2',
-			imgMain: '/assets/images/theme/theme_1_3.png',
-			colors: { primary: '#b7f8db', secondary: '#50a7c2' },
+			imgMain: '/assets/images/theme/theme_2_1.png',
+			colors: { primary: '#499d24', secondary: '#e8fcea' },
 			previewImages: [
-				'/assets/images/theme/theme_1_3.png',
-				'/assets/images/theme/theme_1_4.png',
+				'/assets/images/theme/theme_2_1.png',
+				'/assets/images/theme/theme_2_2.png',
+				'/assets/images/theme/theme_2_3.png',
 			]
 		}
 	]
@@ -33,7 +48,7 @@ export const SelectTheme = () => {
 	const openPreview = (index) => {
 		setLoadingPreview(true)
 		handleOpen()
-		setContent({ nameTheme: themes[index].name, previewImages: themes[index].previewImages })
+		setContent({ nameTheme: themes[index].name, previewImages: themes[index].previewImages, idTheme: index })
 		setTimeout(() => { setLoadingPreview(false) }, 1000)
 
 	}
@@ -41,6 +56,12 @@ export const SelectTheme = () => {
 	const closePreview = () => {
 		handleClose()
 		setLoadingPreview(false)
+	}
+	const handleSelectTheme = async () => {
+		const response = await fetchRequest({ strOperation: 'entity/changeTheme', additionalData: { tema: content.idTheme, id_entidad: 1 } })
+		updateTheme[0].results[0].plantilla = content.idTheme
+		dispatch(updateConfigAction(updateTheme))
+		navigate('/Web')
 	}
 
 	return (
@@ -58,13 +79,13 @@ export const SelectTheme = () => {
 									?
 									<CircularProgress />
 									:
-									<Grid item>
+									<>
 										{
-											content.previewImages && content.previewImages.map(previewImg => (
-												<img src={`${previewImg}`} height={'380px'} width='500px' style={{ objectFit: 'contain' }} />
-											))
+											content.previewImages
+											&&
+											<Slider items={content.previewImages} />
 										}
-									</Grid>
+									</>
 							}
 						</Grid>
 					}
@@ -78,7 +99,8 @@ export const SelectTheme = () => {
 							size='small'
 							fontWeight={'bold'}
 							fontSize={'20px'}
-							circular={true}>
+							circular={true}
+							onClick={() => { handleSelectTheme() }}>
 							Seleccionar
 						</MDButton>
 					}

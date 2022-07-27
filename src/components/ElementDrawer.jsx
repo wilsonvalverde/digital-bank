@@ -1,6 +1,6 @@
 import React from 'react'
 import { HomeOutlined, CloseOutlined, KeyboardArrowRightOutlined } from "@mui/icons-material";
-import { IconButton, Grid, Typography, Button } from '@mui/material'
+import { IconButton, Grid, Button } from '@mui/material'
 import { useContextLayout } from '../hooks/context/UseLayoutContextProvider';
 import MDBox from './MDBox';
 
@@ -18,6 +18,7 @@ export const ElementDrawer = () => {
 					display='block'
 					alignItems='center'
 					bgColor='white'
+					opacity={0.8}
 					width='100%'
 					height='100%'
 					p={1}
@@ -28,7 +29,7 @@ export const ElementDrawer = () => {
 					<Grid container height={'100%'} direction='column' rowSpacing={2}>
 						<Grid item flexGrow={1}>
 							<Grid container justifyContent={'center'}>
-								<Typography variant={openDrawer ? 'd4' : 'h4'} textAlign={'center'} color='primary'>GGWP</Typography>
+								<img src={openDrawer ? '/assets/images/stike-logotipo.png' : '/assets/images/stike-logo.png'} width="100%"/>
 								{
 									openDrawer
 										?

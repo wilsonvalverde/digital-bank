@@ -42,7 +42,7 @@ const colors = {
 	warningP: {
 		main: "#FFE200"
 	},
-	
+
 	success: {
 		main: "#29FF00",
 		focus: "#29FF00",
@@ -68,47 +68,62 @@ const colors = {
 		main: "#344767",
 		focus: "#2c3c58",
 	},
+
+	templatePrimary: {
+		main: "#1B1C35",
+		focus: "#1B1C35"
+	},
+	templateSecondary: {
+		main: "#ffffff",
+		focus: "#ffffff"
+	},
+
+
 	gradients: {
 		primary: {
-		  main: "#EC407A",
-		  state: "#D81B60",
+			main: "#EC407A",
+			state: "#D81B60",
 		},
-	
+
 		secondary: {
-		  main: "#747b8a",
-		  state: "#495361",
+			main: "#747b8a",
+			state: "#495361",
 		},
-	
+
 		info: {
-		  main: "#49a3f1",
-		  state: "#1A73E8",
+			main: "#49a3f1",
+			state: "#1A73E8",
 		},
-	
+
 		success: {
-		  main: "#66BB6A",
-		  state: "#43A047",
+			main: "#66BB6A",
+			state: "#43A047",
 		},
-	
+
 		warning: {
-		  main: "#FFA726",
-		  state: "#FB8C00",
+			main: "#FFA726",
+			state: "#FB8C00",
 		},
-	
+
 		error: {
-		  main: "#EF5350",
-		  state: "#E53935",
+			main: "#EF5350",
+			state: "#E53935",
 		},
-	
+
 		light: {
-		  main: "#EBEFF4",
-		  state: "#CED4DA",
+			main: "#EBEFF4",
+			state: "#CED4DA",
 		},
-	
+
 		dark: {
-		  main: "#42424a",
-		  state: "#191919",
+			main: "#42424a",
+			state: "#191919",
 		},
-	  },
+		template: {
+			main: "#1B1C35",
+			state: "#ffffff"
+		},
+	},
 
 	grey: {
 		100: "#f8f9fa",
