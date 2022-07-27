@@ -12,31 +12,16 @@ import { Footer } from "../footer/footer";
 export const Index = () => {
   const fondo = { 0: "/assets/images/myv.png" };
   return (
-    <MDBox
-      display="flex"
-      alignItems="center"
-      width="100%"
-      height="100%" 
-      // sx={{
-      //   backgroundImage: `url("/assets/images/fondo2.jpg")`,
-      //   backgroundSize: "cover !important",
-      // }}
-    >
+    <MDBox display="flex" alignItems="center" width="100%" height="100%">
       <Grid
         container
         direction={"column"}
         justifyContent={"center"}
         alignItems={"center"}
       >
-          <Banner />
         <Grid item lg={12} xs={12}>
-          <Grid
-            container
-            spacing={2}
-            justifyContent={"center"}
-            alignItems={"center"}
-          >
-            <Grid item lg={12}xs={12}>
+          <Grid container justifyContent={"center"} alignItems={"center"}>
+            <Grid item lg={12} xs={12}>
               <MainBody />
             </Grid>
           </Grid>
