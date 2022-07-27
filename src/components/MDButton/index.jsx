@@ -2,10 +2,8 @@ import { forwardRef } from "react";
 import PropTypes from "prop-types";
 import MDButtonRoot from "./MDButtonRoot";
 
-
 const MDButton = forwardRef(
   ({ color, variant, size, circular, iconOnly, fontWeight, fontSize, children, type, margin, ...rest }, ref) => {
-
     return (
       <MDButtonRoot
         {...rest}

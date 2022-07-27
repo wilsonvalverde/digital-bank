@@ -8,6 +8,7 @@ import { BarraMenu } from "../barra/barra";
 import colors from "../../styles/theme/base/colors";
 import { Banner } from "../banner/banner";
 import { Footer } from "../footer/footer";
+import MDButton from "../../components/MDButton";
 
 export const Index = () => {
   const fondo = { 0: "/assets/images/myv.png" };
