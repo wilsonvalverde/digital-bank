@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { UseLayoutContextProvider } from './hooks/context/UseLayoutContextProvider';
@@ -7,8 +7,7 @@ import App from './App';
 import './index.css';
 import theme from './styles/theme';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
 	<React.StrictMode>
 		<ThemeProvider theme={theme}>
 			<CssBaseline>
@@ -17,7 +16,8 @@ root.render(
 				</UseLayoutContextProvider>
 			</CssBaseline>
 		</ThemeProvider>
-	</React.StrictMode>
+	</React.StrictMode>,
+	document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

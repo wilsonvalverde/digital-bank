@@ -26,6 +26,7 @@ export const useStepper = (stepOptional) => {
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
+    
     const handleSkip = () => {
         if (!isStepOptional(activeStep)) {
             // You probably want to guard against something like this,

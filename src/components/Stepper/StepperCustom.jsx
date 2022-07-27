@@ -1,8 +1,9 @@
 import React from 'react'
 import { Step, StepLabel, Stepper } from '@mui/material'
 import { makeStyles } from '@mui/styles'
-import { customBreakpoints } from './../../styles/theme/base/breakpoints'
-import typography from './../../styles/theme/base/typography'
+import { customBreakpoints } from '../../styles/theme/base/breakpoints'
+import typography from '../../styles/theme/base/typography'
+
 export const StepperCustom = ({ steps = [], activeStep }) => {
     const { size } = typography;
     const step = makeStyles({

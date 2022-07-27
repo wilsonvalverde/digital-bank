@@ -20,22 +20,25 @@ const links = [
 ]
 const renderSwitch = (value) => {
     switch (value) {
-        case 0:
-            return (console.log('Paso 1'))
         case 1:
-            return (console.log('Paso 2'))
+            console.log('case 1')
+            break;
         case 2:
-            return (console.log('Paso 3'))
+            console.log('case 2')
+            break;
+        case 3:
+            console.log('case 3')
+            break;
         default:
             break;
     }
 }
 
-const Template = (args) => {
+const Template = (args) =>
     <ThemeProvider theme={theme} >
         <Stepper {...args} />
     </ThemeProvider>
-}
+
 
 export const Stepper3 = Template.bind({})
 
@@ -45,5 +48,5 @@ Stepper3.args = {
     links: links,
     renderSwitch: renderSwitch,
     page: 'page1',
-    label: 'Steper '
+    label: 'Steper'
 }

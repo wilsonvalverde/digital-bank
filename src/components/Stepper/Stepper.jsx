@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Typography } from '@mui/material'
 // import { SearchBar } from '../components/searchBar'
-import MDBox from './../MDBox'
+import MDBox from '../MDBox'
 import { StepperCustom } from './StepperCustom'
 import typography from './../../styles/theme/base/typography'
 
@@ -31,7 +31,7 @@ const Stepper = ({ links, activeStep, steps, renderSwitch, label, page, function
                                         &&
                                         activeStep === 1
                                         ?
-                                        'Términos y condiciones'
+                                        'page1'
                                         :
                                         customLabel[page]
                                         ||
