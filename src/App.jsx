@@ -6,6 +6,7 @@ import { Login } from "./pages/templateBank/Login";
 import { Index as IndexBank } from "./pages/templateBank/Index/Index";
 import { Transfer } from "./pages/templateBank/Transfer/Transfer";
 import { Web } from "./pages/web/Web";
+import SelectServices from "./pages/services/SelectServices"
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 				<Route path="/PosicionConsolidada" caseSensitive element={<IndexBank />} />
 				<Route path="/Transferencias" caseSensitive element={<Transfer />} />
 				<Route path="/Web" caseSensitive element={<Web />} />
+				<Route path="/Servicios" caseSensitive element={<SelectServices />} />
 			</Routes>
 		</Router>
 	);
