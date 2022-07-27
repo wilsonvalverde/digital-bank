@@ -4,8 +4,7 @@ import { styled } from "@mui/material/styles";
 export default styled(Button)(({ theme, ownerState }) => {
   const { palette, functions, borders, boxShadows } = theme;
   const { color, variant, size, circular, iconOnly, fontWeight, fontSize, margin, darkMode } = ownerState;
-
-  const { white, text, transparent, gradients, grey } = palette;
+  const { white, text, transparent, primary, grey,  } = palette;
   const { boxShadow, linearGradient, pxToRem, rgba } = functions;
   const { borderRadius } = borders;
   const { colored } = boxShadows;
@@ -132,9 +131,9 @@ export default styled(Button)(({ theme, ownerState }) => {
   const gradientStyles = () => {
     // background value
     const backgroundValue =
-      color === "white" || !gradients[color]
+      color === "white" || !primary[color]
         ? white.main
-        : linearGradient(gradients[color].main, gradients[color].state);
+        : linearGradient(primary[color].main, primary[color].state);
 
     // boxShadow value
     const boxShadowValue = colored[color]
@@ -162,7 +161,7 @@ export default styled(Button)(({ theme, ownerState }) => {
     if (color === "white") {
       colorValue = text.main;
     } else if (color === "light") {
-      colorValue = gradients.dark.state;
+      colorValue = primary.main;
     }
 
     return {
