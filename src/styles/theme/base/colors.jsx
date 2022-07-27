@@ -81,8 +81,12 @@ const colors = {
 		900: "#212529",
 	},
 	green: {
-		main: "#008834",
-		focus: "#2c3c58",
+		main: "#059700",
+		focus: "#0597000",
+	},
+	mint: {
+		main: "#caf8ce",
+		focus: "#caf8ce",
 	},
 	coloredShadows: {
 		primary: "#004cac",

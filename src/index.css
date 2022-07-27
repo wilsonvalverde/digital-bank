@@ -28,6 +28,13 @@ code {
     font-weight: normal;
 }
 
+@font-face {
+    font-family: DarkerGrotesque-Extrabold;
+    src: url('../src/fonts/DarkerGrotesque/DarkerGrotesque-Extrabold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
 #root {
     display: flex;
     height: auto;
