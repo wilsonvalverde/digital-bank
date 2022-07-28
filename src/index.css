@@ -44,6 +44,10 @@ code {
 	font-weight: normal;
 }
 
+.background {
+	background-image: url(../public/assets/images/waves1.svg) !important;
+}
+
 #root {
 	display: flex;
 	height: auto;

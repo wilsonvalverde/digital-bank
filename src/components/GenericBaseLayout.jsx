@@ -8,6 +8,7 @@ const GenericBaseLayout = ({ children }) => {
     const { openDrawer } = useContextLayout()
     return (
         <MDBox
+            className='background'
             minHeight='100%'
             width={'100%'}
             display='flex'

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
+import MDButton from '../../components/MDButton'
 import List from '@mui/material/List';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -10,6 +11,8 @@ import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import axios from 'axios';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import { useNavigate } from 'react-router-dom'
 
 function not(a, b) {
     return a.filter((value) => b.indexOf(value) === -1);
@@ -24,6 +27,7 @@ function union(a, b) {
 }
 
 export default function SelectServices() {
+    const navigate = useNavigate()
     const [checked, setChecked] = React.useState([]);
     const [left, setLeft] = React.useState([]);
     const [right, setRight] = React.useState([]);
@@ -66,10 +70,14 @@ export default function SelectServices() {
         setRight(not(right, rightChecked));
         setChecked(not(checked, rightChecked));
     };
+    const handleSend = () => {
+        navigate('/Temas')
+    };
 
     React.useEffect(() => {
         let servicesArray = [];
         setLeft([]);
+        setRight([]);
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -80,8 +88,14 @@ export default function SelectServices() {
             await axios(requestOptions).then(async (respuesta) => {
 
                 respuesta.data.data.forEach(element => {
-                    servicesArray.push(element.descripcion)
+                    servicesArray.push(
+                        {
+                            name: element.descripcion,
+                            id: element.id
+                        }
+                    )
                 });
+                console.log(servicesArray, rightChecked.length)
                 setLeft(servicesArray);
             }).catch((error) => {
                 console.log(error)
@@ -97,17 +111,21 @@ export default function SelectServices() {
             <CardHeader
                 sx={{ px: 2, py: 1 }}
                 avatar={
-                    <Checkbox
-                        onClick={handleToggleAll(items)}
-                        checked={numberOfChecked(items) === items.length && items.length !== 0}
-                        indeterminate={
-                            numberOfChecked(items) !== items.length && numberOfChecked(items) !== 0
-                        }
-                        disabled={items.length === 0}
-                        inputProps={{
-                            'aria-label': 'all items selected',
-                        }}
-                    />
+                    <>
+                        <Checkbox
+                            onClick={handleToggleAll(items)}
+                            checked={numberOfChecked(items) === items.length && items.length !== 0}
+                            indeterminate={
+                                numberOfChecked(items) !== items.length && numberOfChecked(items) !== 0
+                            }
+                            disabled={items.length === 0}
+                            inputProps={{
+                                'aria-label': 'all items selected',
+                            }}
+                        />
+                    </>
+
+
                 }
                 title={title}
                 subheader={`${numberOfChecked(items)}/${items.length} seleccionados`}
@@ -144,7 +162,7 @@ export default function SelectServices() {
                                     }}
                                 />
                             </ListItemIcon>
-                            <ListItemText id={labelId} primary={`${value}`} />
+                            <ListItemText id={labelId} primary={`${value.name}`} />
                         </ListItem>
                     );
                 })}
@@ -154,33 +172,69 @@ export default function SelectServices() {
     );
 
     return (
-        <Grid container spacing={2} justifyContent="center" alignItems="center">
-            <Grid item>{customList('Productos disponibles', left)}</Grid>
-            <Grid item>
-                <Grid container direction="column" alignItems="center">
-                    <Button
-                        sx={{ my: 0.5 }}
-                        variant="outlined"
-                        size="small"
-                        onClick={handleCheckedRight}
-                        disabled={leftChecked.length === 0}
-                        aria-label="move selected right"
+        <>
+
+            <Grid container spacing={2} marginTop={10} marginBottom={10} justifyContent="center" alignItems="center">
+                <Grid item>{customList('Productos disponibles', left)}</Grid>
+                <Grid item>
+                    <Grid container direction="column" alignItems="center">
+                        <Button
+                            sx={{ my: 0.5 }}
+                            variant="outlined"
+                            size="small"
+                            onClick={handleCheckedRight}
+                            disabled={leftChecked.length === 0}
+                            aria-label="move selected right"
+                        >
+                            &gt;
+                        </Button>
+                        <Button
+                            sx={{ my: 0.5 }}
+                            variant="outlined"
+                            size="small"
+                            onClick={handleCheckedLeft}
+                            disabled={rightChecked.length === 0}
+                            aria-label="move selected left"
+                        >
+                            &lt;
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid item>{customList('Productos seleccionados', right)}</Grid>
+
+            </Grid>
+            <Grid container justifyContent={'center'} spacing={2} paddingTop={'1%'}>
+                <Grid item xs={8} md={4}>
+                    <MDButton
+                        variant='contained'
+                        color='secondary'
+                        size='small'
+                        form='form-dataIFI'
+                        type='submit'
+                        fontWeight={'bold'}
+                        fontSize={'20px'}
+                        circular={true}
+                        onClick={() => { handleSend() }}
+                        fullWidth
+                        disabled={right.length < 1}
                     >
-                        &gt;
-                    </Button>
-                    <Button
-                        sx={{ my: 0.5 }}
-                        variant="outlined"
-                        size="small"
-                        onClick={handleCheckedLeft}
-                        disabled={rightChecked.length === 0}
-                        aria-label="move selected left"
-                    >
-                        &lt;
-                    </Button>
+                        Siguiente
+                    </MDButton>
+                </Grid>
+                <Grid item xs={8} md={4}>
+                    <MDButton
+                        variant='outlined'
+                        color='secondary'
+                        size='small'
+                        fontWeight={'bold'}
+                        fontSize={'20px'}
+                        circular={true}
+                        fullWidth
+                        onClick={() => { navigate('/') }}>
+                        Cancelar
+                    </MDButton>
                 </Grid>
             </Grid>
-            <Grid item>{customList('Productos seleccionados', right)}</Grid>
-        </Grid>
+        </>
     );
 }

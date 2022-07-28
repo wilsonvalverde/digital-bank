@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import LegalDataIFI from './LegalDataIFI';
 import GenericBaseLayout from '../../components/GenericBaseLayout';
 import { helpFunctions } from '../../helpers/helpFunctions';
-
+import SelectServices from '../../pages/services/SelectServices';
+import '../../index.css'
 const InitialConfigaration = () => {
     const navigate = useNavigate()
     const { fetchRequest } = helpFunctions()
@@ -86,8 +87,9 @@ const InitialConfigaration = () => {
                 return (
 
                     processComplete ?
-                        console.log('Succes')
+                        <SelectServices />
                         //Componente Wilson
+
                         :
                         console.log('Error')
                 )
