@@ -11,7 +11,11 @@ import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import axios from 'axios';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import MarkUnreadChatAltRoundedIcon from '@mui/icons-material/MarkUnreadChatAltRounded';
+import AccountBalanceWalletRoundedIcon from '@mui/icons-material/AccountBalanceWalletRounded';
+import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
+import AssignmentIndRoundedIcon from '@mui/icons-material/AssignmentIndRounded';
+import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
 import { useNavigate } from 'react-router-dom'
 
 function not(a, b) {
@@ -27,6 +31,22 @@ function union(a, b) {
 }
 
 export default function SelectServices() {
+    const handleIcons = (id) => {
+        switch (id) {
+            case 1:
+                return <MarkUnreadChatAltRoundedIcon color='orange' />
+            case 2:
+                return <AccountBalanceRoundedIcon />
+            case 6:
+                return <AssignmentIndRoundedIcon />
+            case 7:
+                return <AddShoppingCartRoundedIcon />
+            case 8:
+                return <AccountBalanceWalletRoundedIcon />
+            default:
+                break;
+        }
+    };
     const navigate = useNavigate()
     const [checked, setChecked] = React.useState([]);
     const [left, setLeft] = React.useState([]);
@@ -70,9 +90,11 @@ export default function SelectServices() {
         setRight(not(right, rightChecked));
         setChecked(not(checked, rightChecked));
     };
+
     const handleSend = () => {
         navigate('/Temas')
     };
+
 
     React.useEffect(() => {
         let servicesArray = [];
@@ -153,6 +175,7 @@ export default function SelectServices() {
                             onClick={handleToggle(value)}
                         >
                             <ListItemIcon>
+
                                 <Checkbox
                                     checked={checked.indexOf(value) !== -1}
                                     tabIndex={-1}
@@ -161,6 +184,13 @@ export default function SelectServices() {
                                         'aria-labelledby': labelId,
                                     }}
                                 />
+                                <div className='item' style={{ marginTop: '10px', marginRight: '10px' }}>
+                                    {
+                                        handleIcons(value.id)
+                                    }
+
+                                </div>
+
                             </ListItemIcon>
                             <ListItemText id={labelId} primary={`${value.name}`} />
                         </ListItem>

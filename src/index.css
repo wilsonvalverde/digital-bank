@@ -48,6 +48,10 @@ code {
 	background-image: url(../public/assets/images/waves1.svg) !important;
 }
 
+.item svg {
+	color: #4A9D24;
+}
+
 #root {
 	display: flex;
 	height: auto;
