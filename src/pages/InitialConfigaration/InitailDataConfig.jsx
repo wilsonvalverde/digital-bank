@@ -9,7 +9,7 @@ import MDButton from '../../components/MDButton'
 import { useNavigate } from 'react-router-dom'
 import { Color, ColorPicker, createColor } from "material-ui-color";
 import $ from 'jquery';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types' 
 
 const InitailDataConfig = ({ sendDataFunction }) => {
     const { forceStringNumber } = helpFunctions()
