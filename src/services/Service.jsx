@@ -10,7 +10,7 @@ export const Services = ({ strOperation, additionalData, }) => {
 
 		{
 
-			globalURL: `http://fintech.kradac.com:3000/${strOperation}`,
+			globalURL: `http://localhost:3000/${strOperation}`,
 			body: additionalData,
 			headers: {
 				'Content-Type': 'application/json',

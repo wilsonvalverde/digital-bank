@@ -104,7 +104,7 @@ export default function SelectServices() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             data: { "id_entity": 1 },
-            url: 'https://www.fintech.kradac.com:3006/modulo/get_services'
+            url: 'http://localhost:3000/modulo/get_services'
         };
         async function prueba() {
             await axios(requestOptions).then(async (respuesta) => {
