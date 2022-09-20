@@ -23,6 +23,7 @@ const InitialConfigaration = () => {
     ]
     const [dataIFI, setDataIFI] = useState([])
     const [processComplete, setProcessComplete] = useState(false)
+    const [idEntity, setIdEntity] = useState(null);
     const { activeStep, handleNext, handleSkip, isStepOptional, returnFirstItem } = useStepper(1);
     const steps = ['Datos Institucionales', 'Legal y comunicación', 'Falta poco',]
 
@@ -51,8 +52,8 @@ const InitialConfigaration = () => {
             nombre: dataIFI && dataIFI.data.nameIFI,
             logo_horizontal: dataIFI && dataIFI.data.horizontalLogo,
             logo_vertical: dataIFI && dataIFI.data.verticalLogo,
-            color_primario: dataIFI && dataIFI.primaryColor,
-            color_secundario: dataIFI && dataIFI.secondaryColor,
+            color_primario: dataIFI && '#' + dataIFI.primaryColor,
+            color_secundario: dataIFI && '#' + dataIFI.secondaryColor,
             copyright: dataIFI && dataIFI.dataLegalDataEntity.copyrightInput,
             contacto: dataIFI && dataIFI.dataLegalDataEntity.contactInput,
             lema: dataIFI && dataIFI.dataLegalDataEntity.statementInput,
@@ -62,11 +63,12 @@ const InitialConfigaration = () => {
             id_entidad: 1,
         }
         const response = await fetchRequest({
-            strOperation: 'entity/update_entity',
+            strOperation: 'entity/set_entity',
             additionalData: additionalData,
         })
         if (response.affectedRows === 1) {
             setProcessComplete(true)
+            setIdEntity(response.insertId);
             handleNext()
         } else {
             console.log('Ocurrio un error')
@@ -87,7 +89,7 @@ const InitialConfigaration = () => {
                 return (
 
                     processComplete ?
-                        <SelectServices />
+                        <SelectServices idEntity={idEntity} />
                         //Componente Wilson
 
                         :

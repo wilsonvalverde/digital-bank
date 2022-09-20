@@ -16,7 +16,9 @@ import AccountBalanceWalletRoundedIcon from '@mui/icons-material/AccountBalanceW
 import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
 import AssignmentIndRoundedIcon from '@mui/icons-material/AssignmentIndRounded';
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { helpFunctions } from '../../helpers/helpFunctions';
+
 
 function not(a, b) {
     return a.filter((value) => b.indexOf(value) === -1);
@@ -30,7 +32,7 @@ function union(a, b) {
     return [...a, ...not(b, a)];
 }
 
-export default function SelectServices() {
+export default function SelectServices({ idEntity }) {
     const handleIcons = (id) => {
         switch (id) {
             case 1:
@@ -52,6 +54,8 @@ export default function SelectServices() {
     const [left, setLeft] = React.useState([]);
     const [right, setRight] = React.useState([]);
     const [services, setServicies] = React.useState([]);
+
+    const { fetchRequest } = helpFunctions()
 
     const leftChecked = intersection(checked, left);
     const rightChecked = intersection(checked, right);
@@ -91,25 +95,35 @@ export default function SelectServices() {
         setChecked(not(checked, rightChecked));
     };
 
-    const handleSend = () => {
-        navigate('/Temas')
+    const handleSend = async () => {
+        console.log('Procedemos a enviar ', right, idEntity);
+
+        const additionalData = {
+            services: right,
+            idEntity: idEntity
+        }
+        const response = await fetchRequest({
+            strOperation: 'services_entidad/setServices',
+            additionalData: additionalData
+        })
+        response.status ?
+            navigate('/Temas') : alert('error en el servicio, intente mas tarde');
     };
 
 
     React.useEffect(() => {
+
         let servicesArray = [];
         setLeft([]);
         setRight([]);
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            data: { "id_entity": 1 },
-            url: 'http://localhost:3000/modulo/get_services'
-        };
         async function prueba() {
-            await axios(requestOptions).then(async (respuesta) => {
-
-                respuesta.data.data.forEach(element => {
+            console.log('estamos dentro de pruebaaa ', idEntity)
+            const response = await fetchRequest({
+                strOperation: 'modulo/get_services'
+            })
+            console.log('respuesta 111', response)
+            if (response.status) {
+                response.data.forEach(element => {
                     servicesArray.push(
                         {
                             name: element.descripcion,
@@ -117,12 +131,10 @@ export default function SelectServices() {
                         }
                     )
                 });
-                console.log(servicesArray, rightChecked.length)
                 setLeft(servicesArray);
-            }).catch((error) => {
-                console.log(error)
-            });
-
+            } else {
+                alert('Problemas con el servicio, intente mas tarde')
+            }
             // setData(await axios.post('https://www.fintech.kradac.com:3006/entity', {"id_entity":1 },{ 'Content-Type': 'application/json'}))
         }
         prueba();
